@@ -1,0 +1,114 @@
+- var link = 'heic2any'
+- var title = 'HEIC 格式的圖片怎麼辦？使用 heic2any.js 轉換為 JPEG 或 PNG'
+- var description = '本文介紹了如何使用 heic2any.js JavaScript 套件，將 HEIC 格式的圖片轉換為 JPEG 或 PNG 格式。同時提供了程式碼示例和使用方法，方便大家進行實際操作。'
+
+<!DOCTYPE html>
+html(lang="zh-Hant")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title #{title} - August - Let's Write
+
+    link(rel="canonical", href=`https://www.letswrite.tw/${link}/`)
+    meta(property="og:url", content=`https://letswritetw.github.io/letswrite-${link}/`)
+
+    //- meta(property="fb:app_id", content="911000986339138")
+    meta(property="og:type", content="website")
+
+    meta(property="og:site_name", content="Let's Write")
+    meta(property="og:title", content=`${title} - Augustus - Let's Write`)
+    meta(itemprop="name", content=`${title} - Augustus - Let's Write`)
+
+    meta(name="description", content=description)
+    meta(property="og:description", content=description)
+    meta(itemprop="description", content=description)
+
+    meta(itemprop="image", content=`https://letswritetw.github.io/letswrite-${link}/fb.jpg`)
+    meta(property="og:image", content=`https://letswritetw.github.io/letswrite-${link}/fb.jpg`)
+    meta(property="og:image:width", content="1200")
+    meta(property="og:image:height", content="630")
+    meta(property="og:image:alt", content=title)
+
+    link(rel="shortcut icon", href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png")
+
+    //- css
+    script(src="https://cdn.tailwindcss.com")
+    link(rel="stylesheet", href="dist/style.min.css")
+    script.
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              main: '#42A6F7',
+              mainHover: '#167FFF'
+            }
+          }
+        }
+      }
+
+    // Google Tag Manager
+    script.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PGQ9WQT');
+  body.bg-neutral-800.text-white
+
+    // Google Tag Manager (noscript)
+    noscript
+      iframe(src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT", height="0", width="0", style="display:none;visibility:hidden")
+    
+    #app.container.mx-auto.p-8
+
+      .text-center
+        h1.mb-4.font-bold.text-4xl=title
+        p 筆記文：
+          a(class="text-main hover:text-mainHover", href=`https://www.letswrite.tw/${link}/`) Let's Write
+      
+      hr.my-6.mx-auto.max-w-3xl.border-t.border-gray-500.border-dashed
+
+      
+      section.mx-auto.max-w-3xl.p-4
+
+        .grid.gap-4(class="sm:grid-cols-2")
+        
+          // 選擇圖片
+          .flex.items-center.justify-center
+            label.mx-auto.cursor-pointer.flex.w-full.h-full.flex-col.items-center.bg-neutral-900.rounded-xl.border-2.border-dashed.border-blue-400.p-6.text-center(for='file')
+              svg.h-10.w-10.text-blue-500(xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2')
+                path(stroke-linecap='round' stroke-linejoin='round' d='M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12')
+              h2.mt-4.text-xl.font-bold 1 選擇圖檔
+              p.mt-2 點擊並選擇您的圖片
+              p.mt-2 限制圖片格式為 HEIC
+              p.mt-2 圖片選擇完，便會自動轉檔並下載
+              input#file.hidden(type='file', accept="image/heic")
+
+          // 使用預設圖片
+          .flex.items-center.justify-center
+            .mx-auto.flex.w-full.flex-col.items-center.bg-neutral-900.rounded-xl.border-2.border-dashed.border-blue-400.p-4.text-center
+              h2.mt-1.mb-2.text-xl.font-bold 2 使用預設圖片
+              a#placeholder(href="")
+                img(src="dist/demo.jpg")
+
+        // control
+        .my-8.flex.items-center
+          p.shrink-0.text-lg 轉換格式：
+          select#type(class="appearance-none border border-neutral-500 rounded-lg focus:ring-blue-500 focus:outline-none w-full px-5 py-3 cursor-pointer")
+            option(value="jpeg") JPEG 可選擇品質
+            option(value="png") PNG
+            option(value="gif") GIF 轉換時間最久
+        .mt-8.flex.items-center
+          p.shrink-0.text-lg 轉換品質：
+          input#quality(class="appearance-none bg-white rounded-lg h-3 w-full", type="range", min="0.1", max="1", step="0.1", value="0.7")
+          p#quality-output.shrink-0.w-10.text-center.text-lg 0.7
+        .my-4
+          p.text-lg * 轉換品質僅在圖片格式選擇 JPEG 時有效。
+
+        hr.my-6.mx-auto.max-w-3xl.border-t.border-gray-500.border-dashed
+
+      section#preview
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.3/heic2any.min.js", async)
+    script(src="dist/main.min.js")
