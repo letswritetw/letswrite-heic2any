@@ -9,6 +9,14 @@
   ],
   "creatorBuild" : "34448",
   "files" : {
+    "\/.gitignore" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/.gitignore",
+      "oF" : 0
+    },
     "\/dist\/demo.jpg" : {
       "ft" : 16384,
       "iS" : 70147,
@@ -44,6 +52,19 @@
       "oAP" : "\/dist\/style.min-min.css",
       "oF" : 0,
       "pg" : 0
+    },
+    "\/fb.jpg" : {
+      "ft" : 16384,
+      "iS" : 631427,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/fb.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     },
     "\/index.html" : {
       "cB" : 0,
